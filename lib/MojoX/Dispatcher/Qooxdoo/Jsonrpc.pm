@@ -6,7 +6,7 @@ use warnings;
 use Mojo::JSON;
 use base 'Mojolicious::Controller';
 
-our $VERSION = '0.50';
+our $VERSION = '0.51';
 
 sub handle_request {
     my $self = shift;
@@ -142,7 +142,12 @@ MojoX::Dispatcher::Qooxdoo::Jsonrpc - Dispatcher for Qooxdoo Json Rpc Calls
     
     # add a route to the Qooxdoo dispatcher and route to it
     my $r = $self->routes;
-    $r->route('/qooxdoo')->to('Jsonrpc#handle_request', services => $services, namespace => 'MojoX::Dispatcher::Qooxdoo');
+    $r->route('/qooxdoo') ->
+            to('
+                Jsonrpc#handle_request', 
+                services => $services, 
+                namespace => 'MojoX::Dispatcher::Qooxdoo'
+            );
         
  }
 
